@@ -14,5 +14,5 @@ Write-Verbose 'Installing Salt'
 Start-Process $InstallerFile -Wait `
                              -NoNewWindow `
                              -PassThru `
-                             -ArgumentList "/S /master=$MasterHost /minion-name=$env:COMPUTERNAME"
+                             -ArgumentList "/S /master=$MasterHost /minion-name=$env:COMPUTERNAME.ToLower()"
 Write-Verbose "Salt is installed"
