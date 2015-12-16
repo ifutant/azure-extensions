@@ -11,8 +11,11 @@ $webclient.DownloadFile($SourceURI, $InstallerFile)
 Write-Verbose 'Salt installer downloaded.'
 
 Write-Verbose 'Installing Salt'
+
+$minionId = $env:COMPUTERNAME.ToLower()
+
 Start-Process $InstallerFile -Wait `
                              -NoNewWindow `
                              -PassThru `
-                             -ArgumentList "/S /master=$MasterHost /minion-name=$env:COMPUTERNAME.ToLower()"
+                             -ArgumentList "/S /master=$MasterHost /minion-name=$minionId"
 Write-Verbose "Salt is installed"
