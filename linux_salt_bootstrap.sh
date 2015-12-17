@@ -16,10 +16,10 @@ function pre_install() {
 
 function configure_jenkins() {
   useradd jenkins
-  mkdir -p $HOME/jenkins/.ssh
-  chmod 700 $HOME/jenkins/.ssh
-  echo $JENKINS_KEY > $HOME/jenkins/.ssh/authorized_keys
-  chmod 600 $HOME/jenkins/.ssh/authorized_keys
+  mkdir -p /home/jenkins/.ssh
+  chmod 700 /home/jenkins/.ssh
+  echo $JENKINS_KEY > /home/jenkins/.ssh/authorized_keys
+  chmod 600 /home/jenkins/.ssh/authorized_keys
   echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 }
 
