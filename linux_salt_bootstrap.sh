@@ -6,6 +6,9 @@ set -u
 
 readonly JENKINS_KEY='ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAul/y76FjXXnLG1pT817S2pJFNV6sTw9JBKYSuPQINv34jR2V6Ad8Lnjg+7IKIdkG6y71NNnNxIXzR9eAaBPdkxb+0kQ0eul/8KBe8xHxQjDZvPsU5yEjnQh/2QqZsdNd+AqQVAe+Uj1RyYp1KuWAUlSlw60SVvDr8lR3anxYgMdrQm7esBxCVMSgvpvdbyYY0fk/h1oE3SyqZBM1VAksNEEQfSfgAVZXyHCJ8RsGpnQHJiOZaBDIo+qAO7CXxXJxqbGzQwFRSNfHCx/krIn4Fvls6UljY0+peAHZposApqrK4Fb/0PKcxUf7FBHbHphjY6CD5Hg6RdUpSuEZDzikow== jenkins@ndmops-vljen000.hce.escriptioncolo.com'
 
+readonly MASTER_CONFIG='file_roots:,  base:,    - /srv/salt,    - /srv/formulas,    - /srv/salt/roles,pillar_roots:,  base:,    - /srv/pillar,  dev:,    - /srv/pillar/dev,  prod:,    - /srv/pillar/prod'
+
+
 function pre_install() {
   yum update -y
   yum install rsync -y
@@ -37,6 +40,7 @@ function install_salt_master() {
   configure_jenkins
   install_salt_repo
   yum install salt-master salt-minion -y
+  echo -e "$MASTER_CONFIG" | tr ',' '\n' > /etc/salt/master
   for service in salt-master salt-minion; do
     systemctl enable $service.service
     systemctl start $service.service
@@ -60,7 +64,5 @@ main() {
   else
      install_salt_minion $2
   fi
-  
-
 }
 main $@
