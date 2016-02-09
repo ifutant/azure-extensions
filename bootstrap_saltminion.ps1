@@ -1,6 +1,6 @@
 param([string]$MasterHost)
 
-$SourceURI = 'https://repo.saltstack.com/windows/Salt-Minion-2015.8.1-AMD64-Setup.exe'
+$SourceURI = 'https://repo.saltstack.com/windows/Salt-Minion-2015.8.5-AMD64-Setup.exe'
 
 Write-Verbose 'Installing Salt... please wait'
 $InstallerFile = 'C:\Packages\Salt.exe'
