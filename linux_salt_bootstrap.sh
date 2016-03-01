@@ -41,6 +41,8 @@ function install_salt_minion() {
 
 
 main() {
+  # Ensure cache is cleared first
+  yum clean all
   if [[ $1 == 'master' ]]; then
      install_salt_master
   else
