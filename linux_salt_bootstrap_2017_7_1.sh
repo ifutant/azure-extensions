@@ -40,6 +40,8 @@ function install_salt_minion() {
   echo "startup_states: highstate" >> /etc/salt/minion
   systemctl enable salt-minion.service
   systemctl start salt-minion.service
+  salt-call saltutil.sync_grains
+  salt-call saltutil.refresh_pillar
 }
 
 
