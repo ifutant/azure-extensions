@@ -21,6 +21,7 @@ function install_salt_repo() {
 
 function install_salt_master() {
   install_salt_repo
+  yum update -y
   yum install salt-master salt-minion -y
   echo -e "$MASTER_CONFIG" | tr ',' '\n' > /etc/salt/master
   for service in salt-master salt-minion; do
@@ -33,6 +34,7 @@ function install_salt_master() {
 function install_salt_minion() {
   local master=$1
   install_salt_repo
+  yum update -y
   yum install salt-minion -y
   echo "master: $master" > /etc/salt/minion
   echo "startup_states: highstate" >> /etc/salt/minion
