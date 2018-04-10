@@ -44,6 +44,7 @@ function install_salt_minion() {
   salt-call state.highstate
   salt-call state.highstate
   echo "startup_states: highstate" >> /etc/salt/minion
+  shutdown -r now
 }
 
 
