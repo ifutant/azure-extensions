@@ -43,6 +43,7 @@ function install_salt_minion() {
   salt-call saltutil.refresh_pillar
   salt-call state.highstate
   salt-call state.highstate
+  yum update -y
   echo "startup_states: highstate" >> /etc/salt/minion
   shutdown -r now
 }
