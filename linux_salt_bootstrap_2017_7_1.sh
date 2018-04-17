@@ -34,7 +34,6 @@ function install_salt_master() {
 function install_salt_minion() {
   local master=$1
   install_salt_repo
-  yum update -y
   yum install salt-minion -y
   echo "master: $master" > /etc/salt/minion
   systemctl enable salt-minion.service
@@ -42,6 +41,7 @@ function install_salt_minion() {
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
   salt-call state.highstate
+  yum update -y
   salt-call state.highstate
   yum update -y
   echo "startup_states: highstate" >> /etc/salt/minion
