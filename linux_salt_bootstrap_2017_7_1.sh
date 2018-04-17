@@ -44,7 +44,6 @@ function install_salt_minion() {
   yum update -y
   salt-call state.highstate
   yum-complete-transaction
-  yum update -y
   echo "startup_states: highstate" >> /etc/salt/minion
   shutdown -r now
 }
