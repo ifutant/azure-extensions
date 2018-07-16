@@ -1,5 +1,10 @@
-param([string]$MasterHost),
-param([string]$nms_app_zip)
+Param(
+    [Parameter(Mandatory=$true,ValueFromPipeline=$true)]
+    [string]$MasterHost = "not-specified",
+
+    [Parameter(Mandatory=$true,ValueFromPipeline=$true)]
+    [string]$nms_app_zip = "not-specified"
+)
 Write-Verbose 'Configuring Salt... please wait'
 $ConfigFile = 'C:\salt\conf\minion'
 $IdFile = 'C:\salt\conf\minion_id'
