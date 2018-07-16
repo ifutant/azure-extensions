@@ -14,7 +14,7 @@ $nms_app_id = $nms_app_zip
 $grainString = @"
 grains:
   nms_app_id: $nms_app_id
-  deployment_method: packer
+  deployment_method: packer_post_deploy
 "@
 
 Set-Content $ConfigFile "master: $MasterHost"
