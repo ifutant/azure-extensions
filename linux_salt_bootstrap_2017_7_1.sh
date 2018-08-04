@@ -40,7 +40,6 @@ function install_salt_minion() {
   systemctl start salt-minion.service
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
-  salt-call state.highstate
   yum update -y
   salt-call state.highstate
   yum-complete-transaction -y
