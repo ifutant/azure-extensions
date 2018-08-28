@@ -12,5 +12,4 @@ salt-call saltutil.sync_grains
 salt-call saltutil.refresh_pillar
 salt-call state.highstate
 salt-call state.highstate
-shutdown -r now
 exit 0
