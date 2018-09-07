@@ -54,7 +54,7 @@ else {
               
     switch ($Version)
     {
-        "Windows 2012R2"      {$link = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win8.1AndW2K12R2-KB3134758-x64.msu"}
+        "Windows 2012R2"      {$link = "https://ncinfdvrep0001.blob.core.windows.net/windows/Win8.1AndW2K12R2-KB3191564-x64.msu"}
         "Windows 2012"        {$link = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/W2K12-KB3134759-x64.msu"}
         #"Windows 2008R2"      {$link = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win7AndW2K8R2-KB3134760-x64.msu"}    
         "Windows 8.1 64Bit"   {$link = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win8.1AndW2K12R2-KB3134758-x64.msu"}
