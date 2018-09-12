@@ -25,3 +25,4 @@ Set-Service "salt-minion" -StartupType "Automatic"
 Start-Service "salt-minion"
 c:\salt\salt-call.bat state.highstate -l debug
 Start-ScheduledTask -TaskName InstallWindowsUpdates
+Start-ScheduledTask -TaskName InstallPSWinUpdate
