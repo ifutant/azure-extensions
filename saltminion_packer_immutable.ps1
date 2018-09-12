@@ -24,4 +24,4 @@ Set-Content $IdFile "$minionId"
 Set-Service "salt-minion" -StartupType "Automatic"
 Start-Service "salt-minion"
 c:\salt\salt-call.bat state.highstate -l debug
-Install-WindowsUpdate -IgnoreUserInput -AcceptAll -AutoReboot
+Start-ScheduledTask -TaskName InstallWindowsUpdates
