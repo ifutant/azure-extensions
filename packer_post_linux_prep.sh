@@ -9,4 +9,5 @@ salt-call state.highstate -l debug --local
 salt-call state.highstate -l debug --local
 salt-call system.reboot 1
 rm -rf /deployTemp
+systemctl disable salt-minion
 exit 0
