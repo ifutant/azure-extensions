@@ -8,4 +8,5 @@ salt-call file.replace '/etc/salt/minion' pattern='packer_pre_deploy' repl='pack
 salt-call state.highstate -l debug --local
 salt-call state.highstate -l debug --local
 salt-call system.reboot 1
+rm -rf /deployTemp
 exit 0
