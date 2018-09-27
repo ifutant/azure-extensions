@@ -27,4 +27,4 @@ c:\salt\salt-call.bat state.highstate -l debug
 Start-ScheduledTask -TaskName InstallWindowsUpdates
 Start-ScheduledTask -TaskName InstallPSWinUpdate
 Install-WindowsUpdate -IgnoreUserInput -AcceptAll -AutoReboot
-Restart-Computer
+c:\salt\salt-call.bat system.reboot 5
