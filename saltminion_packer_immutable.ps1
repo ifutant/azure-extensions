@@ -26,5 +26,5 @@ Start-Service "salt-minion"
 c:\salt\salt-call.bat state.highstate -l debug
 Start-ScheduledTask -TaskName InstallWindowsUpdates
 Start-ScheduledTask -TaskName InstallPSWinUpdate
-Restart-Computer -Wait -For PowerShell -Timeout 300 -Delay 2
 Install-WindowsUpdate -IgnoreUserInput -AcceptAll -AutoReboot
+Restart-Computer
