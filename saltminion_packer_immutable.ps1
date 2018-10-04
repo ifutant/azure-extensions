@@ -17,13 +17,12 @@ grains:
   deployment_method: packer_post_deploy
 "@
 
-Set-Content $ConfigFile "master: $MasterHost"
 Add-Content $ConfigFile "startup_states: highstate"
 Add-Content $ConfigFile $grainString
 Set-Content $IdFile "$minionId"
 Set-Service "salt-minion" -StartupType "Automatic"
 Start-Service "salt-minion"
-c:\salt\salt-call.bat state.highstate -l debug
+c:\salt\salt-call.bat --local state.highstate -l debug
 Start-ScheduledTask -TaskName InstallWindowsUpdates
 Start-ScheduledTask -TaskName InstallPSWinUpdate
 Install-WindowsUpdate -IgnoreUserInput -AcceptAll -AutoReboot
