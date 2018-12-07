@@ -21,6 +21,7 @@ Set-Content $ConfigFile "master: $MasterHost"
 Add-Content $ConfigFile "startup_states: highstate"
 Add-Content $ConfigFile $grainString
 Set-Content $IdFile "$minionId"
+ipconfig /registerdns
 Set-Service "salt-minion" -StartupType "Automatic"
 Start-Service "salt-minion"
 c:\salt\salt-call.bat state.highstate -l debug
