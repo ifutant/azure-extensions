@@ -10,6 +10,5 @@ salt-call state.highstate -l debug --local
 salt-call state.highstate -l debug --local
 rm -rf $SALTDIRECTORY
 systemctl disable salt-minion
-yum update -y
 fi
 exit 0
