@@ -41,6 +41,7 @@ function install_salt_minion() {
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
   echo "startup_states: highstate" >> /etc/salt/minion
+  yum update -y
   salt-call system.reboot 1
 }
 
