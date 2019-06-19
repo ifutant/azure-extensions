@@ -33,7 +33,6 @@ function install_salt_master() {
 
 function install_salt_minion() {
   local master=$1
-  yum update -y
   install_salt_repo
   yum install salt-minion -y
   echo "master: $master" > /etc/salt/minion
@@ -42,11 +41,7 @@ function install_salt_minion() {
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
   echo "startup_states: highstate" >> /etc/salt/minion
-  yum clean all
-  rm -rf /var/cache/yum/*
-  yum makecache fast
-  yum install yum-utils -y
-  package-cleanup --dupes
+  salt-call state.highstate -l debug
   yum update -y
   salt-call system.reboot 1
 }
