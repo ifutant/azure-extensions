@@ -42,7 +42,6 @@ function install_salt_minion() {
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
   echo "startup_states: highstate" >> /etc/salt/minion
-  salt-call state.highstate
   yum clean all
   rm -rf /var/cache/yum/*
   yum makecache fast
