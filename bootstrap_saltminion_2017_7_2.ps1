@@ -7,6 +7,7 @@ $InstallerFile = 'C:\Packages\Salt.exe'
 $ConfigFile = 'C:\salt\conf\minion'
 
 Write-Verbose "Downloading salt installer from $SourceURI to $InstallerFile"
+[System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor 192 -bor 48
 $WebClient = New-Object System.Net.WebClient
 $webclient.DownloadFile($SourceURI, $InstallerFile)
 Write-Verbose 'Salt installer downloaded.'
