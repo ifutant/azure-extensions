@@ -37,14 +37,20 @@ function install_salt_minion() {
   yum install salt-minion -y
   echo "master: $master" > /etc/salt/minion
   systemctl enable salt-minion.service
+  salt-call saltutil.sync_grains
+  salt-call saltutil.refresh_pillar
   systemctl start salt-minion.service
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
-  echo "startup_states: highstate" >> /etc/salt/minion
+  systemctl stop salt-minion.service
   salt-call file.remove /etc/salt/minion.d/f_defaults.conf  
-  salt-call saltutil.sync_grains
+  salt-call saltutil.sync_grains 
+  salt-call saltutil.refresh_pillar
+  systemctl start salt-minion.service
+  salt-call saltutil.sync_grains 
   salt-call saltutil.refresh_pillar
   salt-call state.highstate -l debug
+  echo "startup_states: highstate" >> /etc/salt/minion
   salt-call system.reboot 1
 }
 
