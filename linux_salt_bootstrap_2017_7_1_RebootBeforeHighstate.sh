@@ -41,6 +41,9 @@ function install_salt_minion() {
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
   echo "startup_states: highstate" >> /etc/salt/minion
+  salt-call file.remove /etc/salt/minion.d/f_defaults.conf  
+  salt-call saltutil.sync_grains
+  salt-call saltutil.refresh_pillar
   salt-call state.highstate -l debug
   salt-call system.reboot 1
 }
