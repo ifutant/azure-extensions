@@ -51,7 +51,7 @@ function install_salt_minion() {
   salt-call saltutil.refresh_pillar
   salt-call state.highstate -l debug
   echo "startup_states: highstate" >> /etc/salt/minion
-  salt-call system.reboot 1
+  salt-call system.reboot 5
 }
 
 
