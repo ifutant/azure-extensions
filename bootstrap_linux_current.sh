@@ -37,8 +37,6 @@ function install_salt_minion() {
   yum install salt-minion -y
   echo "master: $master" > /etc/salt/minion
   systemctl enable salt-minion.service
-  salt-call saltutil.sync_grains
-  salt-call saltutil.refresh_pillar
   systemctl start salt-minion.service
   salt-call saltutil.sync_grains
   salt-call saltutil.refresh_pillar
