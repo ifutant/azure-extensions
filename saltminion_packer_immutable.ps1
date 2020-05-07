@@ -24,8 +24,5 @@ Set-Content $IdFile "$minionId"
 Remove-Item -Path C:\salt\conf\minion.d\f_defaults.conf -Force
 Set-Service "salt-minion" -StartupType "Automatic"
 Start-Service "salt-minion"
-Start-Process powershell { c:\salt\salt-call.bat state.highstate -l debug }
-Start-Process powershell { Start-ScheduledTask -TaskName InstallWindowsUpdates }
-Start-Process powershell { Start-ScheduledTask -TaskName InstallPSWinUpdate }
-Start-Process powershell { Install-WindowsUpdate -IgnoreUserInput -AcceptAll -IgnoreReboot -verbose }
-c:\salt\salt-call.bat system.reboot 10
+Start-Process powershell { c:\salt\salt-call.bat state.highstate -l debug; Start-ScheduledTask -TaskName InstallWindowsUpdates; Start-ScheduledTask -TaskName InstallPSWinUpdate; Install-WindowsUpdate -IgnoreUserInput -AcceptAll -IgnoreReboot -verbose  }
+c:\salt\salt-call.bat system.reboot 12
