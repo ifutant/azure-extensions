@@ -27,5 +27,5 @@ Start-Service "salt-minion"
 Start-Process powershell { c:\salt\salt-call.bat state.highstate -l debug }
 Start-Process powershell { Start-ScheduledTask -TaskName InstallWindowsUpdates }
 Start-Process powershell { Start-ScheduledTask -TaskName InstallPSWinUpdate }
-Start-Process powershell { Install-WindowsUpdate -IgnoreUserInput -AcceptAll -AutoReboot }
+Start-Process powershell { Install-WindowsUpdate -IgnoreUserInput -AcceptAll -IgnoreReboot -verbose }
 c:\salt\salt-call.bat system.reboot 10
