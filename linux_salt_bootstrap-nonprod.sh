@@ -8,14 +8,14 @@ readonly MASTER_CONFIG='file_roots:,  base:,    - /srv/salt,    - /srv/formulas,
 
 
 function install_salt_repo() {
-  rpm --import https://repo.saltstack.com/yum/redhat/7/x86_64/archive/2017.7.0/SALTSTACK-GPG-KEY.pub
+  rpm --import https://archive.repo.saltstack.com/yum/redhat/7/x86_64/archive/2017.7.0/SALTSTACK-GPG-KEY.pub
   local repofile='/etc/yum.repos.d/saltstack.repo'
   echo '[saltstack-repo]' > $repofile
   echo 'name=SaltStack repo for RHEL/CentOS $releasever' >> $repofile
-  echo 'baseurl=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/archive/2017.7.0' >> $repofile
+  echo 'baseurl=https://archive.repo.saltstack.com/yum/redhat/$releasever/$basearch/archive/2017.7.0' >> $repofile
   echo 'enabled=1'  >> $repofile
   echo 'gpgcheck=1' >> $repofile
-  echo 'gpgkey=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/archive/2017.7.0/$releaseverSALTSTACK-GPG-KEY.pub' >> $repofile
+  echo 'gpgkey=https://archive.repo.saltstack.com/yum/redhat/$releasever/$basearch/archive/2017.7.0/$releaseverSALTSTACK-GPG-KEY.pub' >> $repofile
   yum clean all
 }
 
